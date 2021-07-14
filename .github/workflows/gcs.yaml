@@ -1,0 +1,20 @@
+name: upload-cloud-storage Integration
+
+on: [push]
+
+jobs:
+  upload:
+    name: upload
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: upload
+        name: upload folder
+        uses: ./
+        with:
+          path: nested/in/here
+          parent: false
+          destination: ${{ secrets.UPLOAD_CLOUD_STORAGE_TEST_BUCKET }}
+          credentials: ${{ secrets.UPLOAD_CLOUD_STORAGE_GCP_SA_KEY }}
+      - name: get output
+        run: echo '${{ steps.upload.outputs.uploaded }}'
