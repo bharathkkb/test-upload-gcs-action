@@ -13,9 +13,9 @@ jobs:
         name: upload folder
         uses: google-github-actions/upload-cloud-storage@main
         with:
-          path: /home/runner/work/test-upload-gcs-action/test-upload-gcs-action/nested/in/here
+          path: nested/in/here
           parent: false
-          destination: ${{ secrets.UPLOAD_CLOUD_STORAGE_TEST_BUCKET }}
+          destination: ${{ secrets.UPLOAD_CLOUD_STORAGE_TEST_BUCKET }}/nested/in
           credentials: ${{ secrets.UPLOAD_CLOUD_STORAGE_GCP_SA_KEY }}
       - name: get output
         run: echo '${{ steps.upload.outputs.uploaded }}'
