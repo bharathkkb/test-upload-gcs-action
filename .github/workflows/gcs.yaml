@@ -13,7 +13,7 @@ jobs:
         name: upload folder
         uses: google-github-actions/upload-cloud-storage@main
         with:
-          path: nested/in/here
+          path: /home/runner/work/test-upload-gcs-action/test-upload-gcs-action/nested/in/here
           parent: false
           destination: ${{ secrets.UPLOAD_CLOUD_STORAGE_TEST_BUCKET }}
           credentials: ${{ secrets.UPLOAD_CLOUD_STORAGE_GCP_SA_KEY }}
